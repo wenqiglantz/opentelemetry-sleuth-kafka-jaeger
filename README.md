@@ -1,1 +1,1 @@
-# OpenTelemetry-Sleuth-Jaeger
+# OpenTelemetry-Sleuth-Kafka-Jaeger

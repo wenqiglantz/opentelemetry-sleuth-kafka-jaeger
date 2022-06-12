@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.github.wenqiglantz.service</groupId>
+		<artifactId>tracing</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<groupId>com.github.wenqiglantz.service</groupId>
+	<artifactId>customer-service-bff</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<properties>
+		<java.version>17</java.version>
+		<docker.tag>${project.version}</docker.tag>
+		<customer-service.version>0.0.1-SNAPSHOT</customer-service.version>
+		<customer-service-bff.version>0.0.1-SNAPSHOT</customer-service-bff.version>
+		<lombok.version>1.18.24</lombok.version>
+		<springdoc-openapi.version>1.6.5</springdoc-openapi.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.github.wenqiglantz.service</groupId>
+			<artifactId>customer-service</artifactId>
+			<version>${customer-service.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20180130</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>${springdoc-openapi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<optional>true</optional>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

@@ -1,0 +1,30 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+services:
+  customer-service:
+    url: http://customer-service:8081/customers
+
+springdoc:
+  swagger-ui:
+    displayRequestDuration: true
+    disable-swagger-default-url: true
+    csrf:
+      enabled: true
+    operationsSorter: method #For sorting endpoints by http methods
+    tagsSorter: alpha #For sorting tags alphabetically
+  api-docs:
+    path: /api
+
+spring:
+  application:
+    name: customer-service-bff
+  sleuth:
+    otel:
+      config:
+        trace-id-ratio-based: 1.0
+      exporter:
+        otlp:
+          endpoint: http://otel-collector:4317

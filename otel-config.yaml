@@ -12,19 +12,24 @@ receivers:
 
 processors:
   batch:
+    timeout: 10s
 
 exporters:
   logging:
     logLevel: debug
-  jaeger:
-    endpoint: jaeger-all-in-one:14250
-    tls:
-      insecure: true
+  datadog:
+    env: poc
+    service: customer-service
+    version: 0.0.1-SNAPSHOT
+    tags: [poc]
+    api:
+      key: ###############
+      site: datadoghq.eu
 
 service:
   pipelines:
     traces:
       receivers: [ otlp ]
       processors: [ batch ]
-      exporters: [ logging, jaeger ]
+      exporters: [ logging, datadog ]
   extensions: [ memory_ballast, zpages ]
